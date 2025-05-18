@@ -1,0 +1,45 @@
+@import url('./shared.scss');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 16px;
+}
+
+body,
+html {
+  color: var(--secondary);
+  padding: 0;
+  margin: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  background: var(--background);
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+}
+
+:root {
+  --primary: #da2e9a;
+  --secondary: #313131;
+  --background: #f2eef3;
+}
