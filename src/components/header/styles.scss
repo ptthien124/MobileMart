@@ -1,0 +1,25 @@
+.header {
+  display: fixed;
+
+  background: #515154;
+}
+
+.header-item {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  padding-inline: 4rem;
+
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: #666669;
+  }
+}

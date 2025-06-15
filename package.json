@@ -13,11 +13,18 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+    "@ant-design/icons": "5.x",
+    "@hookform/resolvers": "^5.1.1",
+    "@tanstack/react-query": "^5.80.7",
     "antd": "^5.25.1",
+    "axios": "^1.10.0",
+    "classnames": "^2.5.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.57.0",
     "react-router-dom": "^7.6.0",
-    "sass": "^1.89.0"
+    "sass": "^1.89.2",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
@@ -25,6 +32,7 @@
     "@types/node-sass": "^4.11.8",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "@types/sass-loader": "^8.0.9",
     "@vitejs/plugin-react-swc": "^3.9.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.25.0",
@@ -38,6 +46,7 @@
     "style-loader": "^4.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
+    "typings-for-css-modules-loader": "^1.7.0",
     "vite": "^6.3.5"
   }
 }

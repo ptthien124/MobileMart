@@ -1,20 +1,7 @@
-import { lazy, memo, Suspense } from 'react'
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
-import Layout from '../components/layout'
-
-/* -------------------------------------------------------------------------- */
-/*                               Defined routes                               */
-/* -------------------------------------------------------------------------- */
-
-export const PUBLIC_ROUTES = {
-  SIGN_IN: 'sign-in'
-}
-
-export const PRIVATE_ROUTES = {
-  DASHBOARD: { ROOT: '/dashboard' }
-}
-
-/* ----------------------------- Defined routes ----------------------------- */
+import { lazy, memo, Suspense } from 'react';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import Layout from '../components/layout';
+import { PRIVATE_ROUTES } from '../contants/route';
 
 //
 //
@@ -24,7 +11,9 @@ export const PRIVATE_ROUTES = {
 /*                           Lazy import components                           */
 /* -------------------------------------------------------------------------- */
 
-const DashboardRoutes = lazy(() => import('../pages/dashboard/index.routes'))
+const DashboardRoutes = lazy(() => import('../pages/dashboard/index.routes'));
+const ModuleRoutes = lazy(() => import('../pages/module/index.routes'));
+const ManagementRoutes = lazy(() => import('../pages/management/index.routes'));
 
 /* ------------------------- Lazy import components ------------------------- */
 
@@ -33,8 +22,16 @@ const BaseAppRouter = () => {
     dashboard: {
       element: DashboardRoutes,
       path: PRIVATE_ROUTES.DASHBOARD.ROOT
+    },
+    module: {
+      element: ModuleRoutes,
+      path: PRIVATE_ROUTES.MODULE.ROOT
+    },
+    management: {
+      element: ManagementRoutes,
+      path: PRIVATE_ROUTES.MANAGEMENT.ROOT
     }
-  }
+  };
 
   return (
     <Routes>
@@ -51,17 +48,17 @@ const BaseAppRouter = () => {
         <Route index element={<Navigate to={PRIVATE_ROUTES.DASHBOARD.ROOT} />} />
 
         {Object.keys(privatesRoutes).map((key) => {
-          const route = privatesRoutes[key as keyof typeof privatesRoutes]
-          const { path, element: Element } = route
-          return <Route key={key} path={path + '/*'} element={<Element />} />
+          const route = privatesRoutes[key as keyof typeof privatesRoutes];
+          const { path, element: Element } = route;
+          return <Route key={key} path={path + '/*'} element={<Element />} />;
         })}
 
         <Route path='*' element={<Navigate to={PRIVATE_ROUTES.DASHBOARD.ROOT} />} />
       </Route>
     </Routes>
-  )
-}
+  );
+};
 
-const AppRouter = memo(BaseAppRouter)
+const AppRouter = memo(BaseAppRouter);
 
-export default AppRouter
+export default AppRouter;

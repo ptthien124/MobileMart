@@ -4,10 +4,12 @@ import './styles.scss'
 
 const Layout = (props: PropsWithChildren) => {
   return (
-    <div className='layout'>
+    <div className='layout-wrapper'>
       <Header />
 
-      <>{props.children}</>
+      <div className='layout'>
+        <div className='layout-content'>{props.children}</div>
+      </div>
     </div>
   )
 }

@@ -1,19 +1,19 @@
-import { ConfigProvider } from 'antd'
-import { useState } from 'react'
-import AppRouter from '../router'
-import './styles/general.scss'
-import { darkTheme, defaultTheme } from './styles/theme.antd'
+import { ConfigProvider } from 'antd';
+import { useState } from 'react';
+import AppRouter from '../router';
+import './styles/general.scss';
+import { darkTheme, defaultTheme } from './styles/theme.antd';
 
 const App = () => {
-  const [isDarkMode] = useState(false)
+  const [isDarkMode] = useState(false);
 
   return (
-    <div className='app'>
-      <ConfigProvider theme={isDarkMode ? darkTheme : defaultTheme}>
+    <ConfigProvider theme={isDarkMode ? darkTheme : defaultTheme}>
+      <div className='app'>
         <AppRouter />
-      </ConfigProvider>
-    </div>
-  )
-}
+      </div>
+    </ConfigProvider>
+  );
+};
 
-export default App
+export default App;

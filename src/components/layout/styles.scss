@@ -1,4 +1,17 @@
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
 .layout {
+  overflow: auto;
+  height: 100%;
+  padding-block: 2rem;
+}
+
+.layout-content {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;

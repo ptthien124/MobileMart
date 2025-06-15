@@ -1,0 +1,25 @@
+.module-detail {
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  border-radius: 1rem;
+}
+
+.module-purchase {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.module-detail-content {
+  > div {
+    flex: 1;
+    overflow: hidden;
+  }
+}
+
+.module-pagination {
+  justify-content: center;
+
+  margin-top: 6rem;
+}

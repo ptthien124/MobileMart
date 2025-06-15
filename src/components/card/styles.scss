@@ -1,0 +1,17 @@
+.card {
+  padding: 2rem;
+  border-radius: 1rem;
+  height: 100%;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+
+  background: white;
+
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0 0.2rem 1.6rem rgba(0, 0, 0, 0.2);
+  }
+}

@@ -1,11 +1,11 @@
-import { theme, type ThemeConfig } from 'antd'
+import { theme, type ThemeConfig } from 'antd';
 
-const { defaultAlgorithm, darkAlgorithm } = theme
+const { defaultAlgorithm, darkAlgorithm } = theme;
 
 export const themeColors = {
-  primary: '#da2e9a',
+  primary: '#515154',
   secondary: '#313131'
-}
+};
 
 export const defaultTheme: ThemeConfig = {
   algorithm: defaultAlgorithm,
@@ -65,7 +65,7 @@ export const defaultTheme: ThemeConfig = {
       controlItemBgHover: 'transparent'
     }
   }
-}
+};
 
 export const darkTheme: ThemeConfig = {
   algorithm: darkAlgorithm,
@@ -108,4 +108,4 @@ export const darkTheme: ThemeConfig = {
       verticalLabelPadding: '0 0 8px 4px'
     }
   }
-}
+};

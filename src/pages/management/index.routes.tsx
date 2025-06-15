@@ -1,11 +1,11 @@
 import { memo, Suspense } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import Dashboard from './page';
+import Management from './page';
 import { PRIVATE_ROUTES } from '../../contants/route';
 
-const DASHBOARD_ROUTES = PRIVATE_ROUTES.DASHBOARD;
+const MANAGEMENT_ROUTES = PRIVATE_ROUTES.MANAGEMENT;
 
-const BaseDashboardRoutes = () => {
+const BaseManagementRoutes = () => {
   return (
     <Routes>
       <Route
@@ -16,14 +16,14 @@ const BaseDashboardRoutes = () => {
           </Suspense>
         }
       >
-        <Route index element={<Dashboard />} />
+        <Route index element={<Management />} />
 
-        <Route path='*' element={<Navigate to={DASHBOARD_ROUTES.ROOT} />} />
+        <Route path='*' element={<Navigate to={MANAGEMENT_ROUTES.ROOT} />} />
       </Route>
     </Routes>
   );
 };
 
-const DashboardRoutes = memo(BaseDashboardRoutes);
+const ManagementRoutes = memo(BaseManagementRoutes);
 
-export default DashboardRoutes;
+export default ManagementRoutes;
