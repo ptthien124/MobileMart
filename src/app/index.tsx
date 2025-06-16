@@ -1,5 +1,6 @@
 import { ConfigProvider } from 'antd';
 import { useState } from 'react';
+import useAuthentication from '../hooks/useAuthentication';
 import AppRouter from '../router';
 import './styles/general.scss';
 import { darkTheme, defaultTheme } from './styles/theme.antd';

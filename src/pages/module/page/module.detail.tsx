@@ -4,6 +4,7 @@ import Cards from '../../../components/cards';
 import { useGetProductById, useGetProducts, useUpdateProduct } from '../../../queries/product.query';
 import './styles.scss';
 import { DiscountType } from '../../../types/product.type';
+import useAuthentication from '../../../hooks/useAuthentication';
 
 const ModuleDetail = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -13,6 +14,10 @@ const ModuleDetail = () => {
   const { data: productData } = useGetProductById({ id });
 
   const product = productData?.data;
+
+  const { user } = useAuthentication();
+
+  console.log(user);
 
   const { data: otherProducts } = useGetProducts({
     params: { page: 1, take: 4, category: product?.category, exclude: id }
@@ -36,6 +41,11 @@ const ModuleDetail = () => {
     });
   };
 
+  const priceAfterDiscount =
+    product?.discountType === DiscountType.PERCENTAGE
+      ? product?.price - (product?.price * (product?.discount ?? 0)) / 100
+      : (product?.price ?? 0) - (product?.discount ?? 0);
+
   return (
     <>
       {contextHolder}
@@ -47,11 +57,17 @@ const ModuleDetail = () => {
             <Flex gap={10} vertical>
               <h1>{product?.name}</h1>
               {product?.discount && (
-                <strong>
+                <h3>
                   Discount: {product?.discount} {product?.discountType === DiscountType.PERCENTAGE ? '%' : '$'}
-                </strong>
+                </h3>
               )}
-              <h2>
+
+              <h3 className='price'>
+                Price: {product?.discount && <div className='discount-price'>${product?.price}</div>} $
+                {priceAfterDiscount}
+              </h3>
+
+              {/* <h2>
                 Price:{' '}
                 {product?.price
                   ? product?.discountType === DiscountType.PERCENTAGE
@@ -59,14 +75,14 @@ const ModuleDetail = () => {
                     : product?.price - (product?.discount ?? 0)
                   : 0}
                 $
-              </h2>
+              </h2> */}
 
               <p>Stock: {product?.stock}</p>
 
               <p>{product?.description}</p>
 
               <Button
-                disabled={product?.stock === 0}
+                disabled={!user || product?.stock === 0}
                 loading={updateProductMutation.isPending}
                 block
                 size='large'

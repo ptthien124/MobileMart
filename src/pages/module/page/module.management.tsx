@@ -4,6 +4,7 @@ import { useGetProducts } from '../../../queries/product.query';
 import { CATEGORY } from '../../../types/product.type';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { DEFAULT_PAGE_SIZE } from '../../../service/types';
+import { toCapitalize } from '../../../utils';
 
 const ModuleManagement = () => {
   const { search } = useLocation();
@@ -34,9 +35,11 @@ const ModuleManagement = () => {
   const products =
     data?.data?.data?.map((item) => ({ ...item, status: item.stock > 0 ? 'New' : 'Out of stock' })) ?? [];
 
+  console.log(params);
+
   return (
     <div className='module'>
-      <h1>Mobile</h1>
+      <h1>{toCapitalize(params?.category ?? '')}</h1>
 
       <Cards items={products} />
 

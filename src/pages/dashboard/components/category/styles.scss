@@ -1,5 +1,14 @@
 .category {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
   h1 {
     text-align: center;
+  }
+
+  button {
+    width: fit-content;
+    margin: auto;
   }
 }

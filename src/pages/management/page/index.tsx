@@ -34,7 +34,7 @@ const Management = () => {
       });
 
       queryClient.invalidateQueries({
-        queryKey: queryKeys.product.invalidateAllKey
+        queryKey: queryKeys.product.invalidateListsKey()
       });
 
       reset();

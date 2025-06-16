@@ -1,7 +1,9 @@
 import type { ProductParams } from '../types/product.type';
+import { UserParams } from '../types/user.type';
 
 enum QueryKeysEnum {
-  PRODUCT = 'product'
+  PRODUCT = 'product',
+  USER = 'user'
 }
 
 export type DefaultParams = {
@@ -58,5 +60,8 @@ const createBasicListKey = <ListParams = unknown>({ scope }: { scope: QueryKeysE
 export const queryKeys = {
   product: createBasicListKey<ProductParams>({
     scope: QueryKeysEnum.PRODUCT
+  }),
+  user: createBasicListKey<UserParams>({
+    scope: QueryKeysEnum.USER
   })
 };

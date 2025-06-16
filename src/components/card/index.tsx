@@ -1,7 +1,8 @@
-import { Flex } from 'antd';
+import { Flex, Rate, Tag } from 'antd';
+import { generatePath, useNavigate } from 'react-router-dom';
+import { PRIVATE_ROUTES } from '../../constants/route';
+import { DiscountType } from '../../types/product.type';
 import './styles.scss';
-import { PRIVATE_ROUTES } from '../../contants/route';
-import { useNavigate } from 'react-router-dom';
 
 export type CardProps = {
   id: string;
@@ -9,6 +10,7 @@ export type CardProps = {
   name: string;
   price: number;
   discount?: number;
+  discountType?: DiscountType;
   status?: string;
 };
 
@@ -19,9 +21,12 @@ export type CardProps = {
  * @param {CardProps} props - The properties of the card, including id, image, name, price, discount, and status.
  */
 const Card = (props: CardProps) => {
-  const { id, image, name, price, discount, status } = props;
+  const { id, image, name, price, discount, discountType, status } = props;
 
   const navigate = useNavigate();
+
+  const priceAfterDiscount =
+    discountType === DiscountType.PERCENTAGE ? price - (price * (discount ?? 0)) / 100 : price - (discount ?? 0);
 
   return (
     <Flex
@@ -29,15 +34,29 @@ const Card = (props: CardProps) => {
       gap={10}
       vertical
       justify='center'
-      onClick={() => navigate(`${PRIVATE_ROUTES.MODULE.ROOT}/${id}`)}
+      onClick={() => {
+        navigate(generatePath(PRIVATE_ROUTES.MODULE.DETAIL, { id }));
+      }}
     >
-      <img src={image} alt={name} />
+      <div className='image-wrapper'>
+        <img src={image} alt={name} />
+      </div>
 
-      <div>
+      <div className='card-content'>
         <h3>{name}</h3>
-        <p>{price}</p>
-        <p>{discount}</p>
-        {status && <p>{status}</p>}
+        {discount && (
+          <p>
+            Discount: {discount} {discountType === DiscountType.PERCENTAGE ? '%' : '$'}
+          </p>
+        )}
+        <p className='price'>
+          Price: {discount && <div className='discount-price'>${price}</div>} ${priceAfterDiscount}
+        </p>
+
+        <Flex className='status' justify='space-between'>
+          <Tag color={status === 'New' ? 'green' : 'red'}>{status}</Tag>
+          <Rate disabled value={Math.random() * (5 - 3) + 3} />
+        </Flex>
       </div>
     </Flex>
   );

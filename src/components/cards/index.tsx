@@ -13,7 +13,7 @@ const Cards = (props: CardsProps) => {
     <Row gutter={[16, 16]}>
       {items.map((item) => {
         return (
-          <Col span={6} key={item.name}>
+          <Col xs={24} sm={12} md={8} lg={6} xl={6} key={item.name}>
             <Card {...item} />
           </Col>
         );

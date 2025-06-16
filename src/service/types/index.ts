@@ -22,4 +22,4 @@ export type CustomResponse<T> = DefaultResponse & {
   data: { data: T; count: number };
 };
 
-export const DEFAULT_PAGE_SIZE = 10;
+export const DEFAULT_PAGE_SIZE = 8;

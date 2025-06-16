@@ -23,3 +23,13 @@
 
   margin-top: 6rem;
 }
+
+.discount-price {
+  text-decoration: line-through;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}

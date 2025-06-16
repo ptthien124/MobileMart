@@ -6,10 +6,6 @@ class ProductServiceClass extends BaseService<'product', ProductEntity, CreatePr
   constructor() {
     super('product');
   }
-
-  findProduct = (): Promise<ProductEntity[]> => {
-    return APIService.get(this.path);
-  };
 }
 
 export const productService = new ProductServiceClass();

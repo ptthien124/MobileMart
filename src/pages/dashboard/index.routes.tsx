@@ -1,7 +1,7 @@
 import { memo, Suspense } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import Dashboard from './page';
-import { PRIVATE_ROUTES } from '../../contants/route';
+import { PRIVATE_ROUTES } from '../../constants/route';
 
 const DASHBOARD_ROUTES = PRIVATE_ROUTES.DASHBOARD;
 
